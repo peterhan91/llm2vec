@@ -48,7 +48,7 @@ MODEL_TYPES = tuple(conf.model_type for conf in MODEL_CONFIG_CLASSES)
 
 
 def prepare_for_tokenization(model, text, pooling_mode="mean"):
-    if model.config._name_or_path == "meta-llama/Meta-Llama-3-8B-Instruct":
+    if model.config._name_or_path == "meta-llama/Meta-Llama-3.1-8B-Instruct":
         text = (
             "<|start_header_id|>user<|end_header_id|>\n\n" + text.strip() + "<|eot_id|>"
         )
@@ -68,7 +68,7 @@ def prepare_for_tokenization(model, text, pooling_mode="mean"):
     ]:
         text = "<|im_start|>user\n" + text.strip() + "<|im_end|>"
     if pooling_mode == "eos_token":
-        if model.config._name_or_path == "meta-llama/Meta-Llama-3-8B":
+        if model.config._name_or_path == "meta-llama/Meta-Llama-3.1-8B":
             text = text.strip() + "<|end_of_text|>"
         elif isinstance(model.config, LlamaConfig) or isinstance(
             model.config, MistralConfig

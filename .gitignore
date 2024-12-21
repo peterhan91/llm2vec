@@ -9,3 +9,4 @@ results/**
 output/
 *.log
 cluster_scripts/**
+notebooks/
